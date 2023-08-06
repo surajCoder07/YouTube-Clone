@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateData } from "../utils/VideosDataSlice";
 import VideoCard from "./VideoCard";
 import ShimmerVideoCard from "./ShimmerVideoCard";
+import { BackupData } from "../utils/constant";
 
 const VideoContainer = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,15 @@ const VideoContainer = () => {
   const getData = async () => {
     try {
       const response = await fetch(Youtube_API);
+
       const data = await response.json();
-      dispatch(updateData(data.items));
+      if (response.ok === false) {
+        setTimeout(() => {
+          dispatch(updateData(BackupData.items));
+        }, 2000);
+      } else {
+        dispatch(updateData(data.items));
+      }
     } catch (error) {
       console.log(error);
     }

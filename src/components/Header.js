@@ -12,6 +12,7 @@ const Header = () => {
     <div className="flex items-center  justify-center gap-5 sm:justify-between  px-5 shadow-md py-1 sticky top-0 z-50 bg-white">
       <div className="flex items-center gap-5">
         <RxHamburgerMenu onClick={() => dispatch(toggleSlidebar())} />
+
         <div className="hidden md:flex">
           <img src={Logo} alt="youtube-logo" className=" w-24 object-cover" />
         </div>

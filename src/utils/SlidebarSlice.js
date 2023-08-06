@@ -9,7 +9,10 @@ const SlidebarSlice = createSlice({
     toggleSlidebar: (state) => {
       state.isSlidebarOpen = !state.isSlidebarOpen;
     },
+    offSlidebar: (state) => {
+      state.isSlidebarOpen = false;
+    },
   },
 });
-export const { toggleSlidebar } = SlidebarSlice.actions;
+export const { toggleSlidebar, offSlidebar } = SlidebarSlice.actions;
 export default SlidebarSlice.reducer;

@@ -3,9 +3,9 @@ import useFormatNumber from "../utils/useFormatNumber";
 import useFormatDate from "../utils/useFormatDate";
 
 const VideoCard = ({ data }) => {
-  const { snippet, statistics } = data;
-  console.log(data);
-  const views = useFormatNumber(statistics.viewCount);
+  const { snippet } = data;
+
+  const views = useFormatNumber(data?.statistics?.viewCount);
   const date = useFormatDate(snippet.publishedAt);
 
   return (
@@ -25,13 +25,13 @@ const VideoCard = ({ data }) => {
         />
         <div>
           <h1 className="font-medium text-[15px]">
-            {snippet.title.length > 80
-              ? `${snippet.title.substr(0, 55)}...`
+            {snippet.title.length > 60
+              ? `${snippet.title.substr(0, 40)}...`
               : snippet.title}
           </h1>
           <span className="text-sm text-gray-500">{snippet.channelTitle}</span>
           <div className="flex items-center gap-5">
-            <span className="text-[14px] text-gray-500 ">{views}</span>
+            <span className="text-[14px] text-gray-500 ">{views} views</span>
             <span className="w-1 h-1 rounded-full border border-gray-500 bg-gray-500"></span>
             <span className="text-[14px] text-gray-500  ">{date}</span>
           </div>

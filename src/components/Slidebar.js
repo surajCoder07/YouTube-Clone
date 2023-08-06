@@ -5,6 +5,7 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { MdOutlineVideoLibrary, MdOutlineMovie } from "react-icons/md";
 import { PiClockClockwise } from "react-icons/pi";
 import { useSelector } from "react-redux/";
+import { Link } from "react-router-dom//";
 
 const Slidebar = () => {
   const isSlidebarOpen = useSelector((store) => store.Slidebar.isSlidebarOpen);
@@ -18,10 +19,12 @@ const Slidebar = () => {
     >
       <div className="px-4">
         <ul>
-          <li className="flex items-center gap-4 my-2 px-4 py-2 cursor-default rounded-md hover:bg-gray-200">
-            <GoHome />
-            <span>Home</span>
-          </li>
+          <Link to="/">
+            <li className="flex items-center gap-4 my-2 px-4 py-2 cursor-default rounded-md hover:bg-gray-200">
+              <GoHome />
+              <span>Home</span>
+            </li>
+          </Link>
           <li className="flex items-center gap-4 my-2 px-4 py-2 cursor-default rounded-md hover:bg-gray-200">
             <AiOutlineYoutube />
             <span>Shorts</span>
