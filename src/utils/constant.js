@@ -1,5 +1,6 @@
 const Api_key = "AIzaSyCgEreZSDUXQkfKIjud4qvL6x_FpVvh4wA";
 const Api_key2 = "AIzaSyBsn82v8YtG6U10fFWMn0pZcG_DRwfYKhw";
+const Api_key3 = "AIzaSyCqlREH-FeANxy7xeWJlS8d8YctVFoQPas";
 export const Youtube_API =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&regionCode=In&key=" +
   Api_key;
@@ -10,9 +11,10 @@ export const Yt_Search =
 //https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&key=
 export const Buttons = [
   "All",
-  "Kombat x",
+  "Most Popular",
   "Comedy",
   "Music",
+  "News",
   "Stand up Comedy",
   "Cooking",
   "Arijit Singh",
