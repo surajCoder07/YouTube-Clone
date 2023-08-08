@@ -22,7 +22,7 @@ const appLayout = createBrowserRouter([
       element:<MainContainer/>
     },
     {
-      path:"/watch/:videoId",
+      path:"watch",
       element:<WatchPage/>
     }
   ]

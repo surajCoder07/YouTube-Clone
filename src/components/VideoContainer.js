@@ -19,13 +19,14 @@ const VideoContainer = () => {
       const response = await fetch(Youtube_API);
 
       const data = await response.json();
+      console.log(response);
+
       if (response.ok === false) {
         setTimeout(() => {
-          dispatch(updateData(BackupData.items));
+          dispatch(updateData(BackupData));
         }, 2000);
       } else {
         dispatch(updateData(data.items));
-        console.log(videoData);
       }
     } catch (error) {
       console.log(error);
@@ -33,7 +34,7 @@ const VideoContainer = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-5 justify-between">
+    <div className="flex flex-wrap gap-5 justify-between max-sm:jus">
       {videoData === undefined || videoData.length === 0
         ? Array(10)
             .fill(" ")
@@ -41,8 +42,9 @@ const VideoContainer = () => {
               return <ShimmerVideoCard key={index} />;
             })
         : videoData.map((video) => (
-            <Link to={"/watch/" + video.id} key={video.id}>
+            <Link to={`/watch?v=` + video.id} key={video.id}>
               <VideoCard data={video} />
+              {/* {${(video.id.videoId===undefined)?video.id:video.id.videoId}} */}
             </Link>
           ))}
     </div>

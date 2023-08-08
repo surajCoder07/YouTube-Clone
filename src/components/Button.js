@@ -11,6 +11,7 @@ const Button = ({ data }) => {
     const dataJson = await response.json();
 
     dispatch(updateData(dataJson.items));
+    console.log(dataJson.items);
   }
 
   return (

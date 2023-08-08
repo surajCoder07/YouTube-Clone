@@ -9,7 +9,7 @@ const VideoCard = ({ data }) => {
   const date = useFormatDate(snippet.publishedAt);
 
   return (
-    <div className=" w-[260px]">
+    <div className=" w-[260px] max-sm:w-[300px] ">
       <div>
         <img
           src={snippet.thumbnails.medium.url}

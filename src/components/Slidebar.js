@@ -14,7 +14,7 @@ const Slidebar = () => {
     <div
       className={
         (isSlidebarOpen ? "flex-[0.4] " : "flex-0 w-0") +
-        " duration-200  border  shadow-lg py-2 h-[100vh] sticky top-0   overflow-hidden  "
+        " duration-200  border  shadow-lg py-2 h-[100vh] sticky top-0  bottom-0 left-0   overflow-hidden  max-sm:absolute max-sm:top-11 bg-white z-40 "
       }
     >
       <div className="px-4">
