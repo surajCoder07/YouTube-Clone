@@ -5,6 +5,7 @@ import { updateData } from "../utils/VideosDataSlice";
 import VideoCard from "./VideoCard";
 import ShimmerVideoCard from "./ShimmerVideoCard";
 import { BackupData } from "../utils/constant";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const VideoContainer = () => {
         }, 2000);
       } else {
         dispatch(updateData(data.items));
+        console.log(videoData);
       }
     } catch (error) {
       console.log(error);
@@ -38,7 +40,11 @@ const VideoContainer = () => {
             .map((arr, index) => {
               return <ShimmerVideoCard key={index} />;
             })
-        : videoData.map((video) => <VideoCard key={video.id} data={video} />)}
+        : videoData.map((video) => (
+            <Link to={"/watch/" + video.id} key={video.id}>
+              <VideoCard data={video} />
+            </Link>
+          ))}
     </div>
   );
 };

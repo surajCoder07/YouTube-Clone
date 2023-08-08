@@ -20,7 +20,7 @@ const useFormatDate = (date) => {
   } else if (minuts > 0) {
     return `${minuts} minut${minuts === 1 ? "" : "s"} ago`;
   } else {
-    return `${seconds} second${seconds === 1 ? "" : "s"} ago}`;
+    return `${seconds} second${seconds === 1 ? "" : "s"} ago`;
   }
 };
 export default useFormatDate;
