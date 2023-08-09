@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { offSlidebar } from "../utils/SlidebarSlice";
-import { useParams } from "react-router-dom";
 import useFormatNumber from "../utils/useFormatNumber";
 import useFormatDate from "../utils/useFormatDate";
 import { AiOutlineLike } from "react-icons/ai";
@@ -66,11 +65,11 @@ const WatchPage = () => {
   };
 
   return (
-    <div className=" px-10 py-5   flex gap-5  flex-[1.5] max-sm:justify-center">
-      <div className="  max-sm:flex-[0]">
+    <div className=" px-10 py-5   flex gap-5 max-sm:w-[100vw] flex-[1.5] max-sm:justify-center max-sm:px-2">
+      <div className="   ">
         <div>
           <iframe
-            className="w-full  max-sm:w-[300px] h-[450px] max-sm:h-[200px]"
+            className=" w-full h-[450px] max-sm:h-[200px]"
             src={"https://www.youtube.com/embed/" + videoId.get("v")}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -103,7 +102,7 @@ const WatchPage = () => {
                 subscribe
               </button>
             </div>
-            <div className="flex items-center gap-4 px-3 max-sm:justify-between ">
+            <div className="flex items-center gap-4 px-3  ">
               <div className="flex">
                 <button className="flex items-center gap-1 bg-gray-100  px-4 py-2 rounded-l-3xl hover:bg-gray-200">
                   <AiOutlineLike />

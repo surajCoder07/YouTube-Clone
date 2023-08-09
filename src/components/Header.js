@@ -9,7 +9,6 @@ import { toggleSlidebar } from "../utils/SlidebarSlice";
 import SearchSuggestion from "./SearchSuggestion";
 import { Yt_Search } from "../utils/constant";
 import { addDataToSearch } from "../utils/SearchSlice";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -75,8 +74,8 @@ const Header = () => {
             <GoSearch />
           </button>
         </div>
-        <div className="bg-gray-100 mx-2 h-9 w-10 rounded-full  flex items-center justify-center cursor-pointer hover:bg-gray-200">
-          <FaMicrophone size={"1em"} />
+        <div className="bg-gray-100 mx-2 h-9 w-10 rounded-full  flex items-center justify-center cursor-pointer hover:bg-gray-200 max-sm:hidden">
+          <FaMicrophone size={"1em"}  />
         </div>
         {isSuggestionsVisible && (
           <div className="bg-white border-black shadow-lg bottom-0 absolute  top-12 h-fit w-[80%]  rounded-md  ">
