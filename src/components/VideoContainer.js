@@ -34,7 +34,7 @@ const VideoContainer = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-5 justify-between max-sm:jus">
+    <div className="flex flex-wrap gap-5 justify-between max-sm:justify-center">
       {videoData === undefined || videoData.length === 0
         ? Array(10)
             .fill(" ")

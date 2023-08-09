@@ -10,6 +10,7 @@ import CommentContainer from "./CommentContainer";
 import OtherVideos from "./OtherVideos";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   const [videoData, setVideoData] = useState({});
@@ -145,7 +146,8 @@ const WatchPage = () => {
         </div>
       </div>
       {!isSlidebarVisible && (
-        <div className="max-sm:hidden  ">
+        <div className="max-sm:hidden flex flex-col  ">
+          <LiveChat />
           <OtherVideos />
         </div>
       )}

@@ -4,7 +4,6 @@ import useFormatDate from "../utils/useFormatDate";
 
 const OtherVideoCard = ({ data }) => {
   const { snippet, statistics } = data;
-  console.log(snippet, statistics);
   const views = useFormatNumber(statistics?.viewCount);
   const date = useFormatDate(snippet?.publishedAt);
   return (
