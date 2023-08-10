@@ -10,6 +10,15 @@ const LiveChat = () => {
   const [myComment, setMyComment] = useState("");
 
   useEffect(() => {
+    const getLiveChats = () => {
+      dispatch(
+        addChats({
+          name: getDetails()[0],
+          comment: getDetails()[1],
+        })
+      );
+    }; 
+
     const interval = setInterval(() => {
       getLiveChats();
     }, 1500);
@@ -19,14 +28,7 @@ const LiveChat = () => {
     };
   }, []);
 
-  const getLiveChats = () => {
-    dispatch(
-      addChats({
-        name: getDetails()[0],
-        comment: getDetails()[1],
-      })
-    );
-  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (myComment !== "") {

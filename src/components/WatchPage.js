@@ -10,6 +10,7 @@ import OtherVideos from "./OtherVideos";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LiveChat from "./LiveChat";
+import { changeTitle } from "../utils/helper";
 
 const WatchPage = () => {
   const [videoData, setVideoData] = useState({});
@@ -28,16 +29,7 @@ const WatchPage = () => {
   useEffect(() => {
     dispatch(offSlidebar());
 
-    const fetchData = async () => {
-      const data = await getData();
-      setVideoData(data);
-      const channelData = await getChannelData(data?.snippet?.channelId);
-      setChannelData(channelData);
-    };
-
-    fetchData();
-  }, [videoId]);
-  const getData = async () => {
+    const getData = async () => {
     try {
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId.get(
@@ -45,6 +37,7 @@ const WatchPage = () => {
         )}&key=AIzaSyCqlREH-FeANxy7xeWJlS8d8YctVFoQPas`
       );
       const data = await response.json();
+      changeTitle(data?.items[0].snippet.title)
 
       return data.items[0];
     } catch (error) {
@@ -63,10 +56,24 @@ const WatchPage = () => {
       console.log(error);
     }
   };
+  
+
+    const fetchData = async () => {
+      const data = await getData();
+      setVideoData(data);
+      const channelData = await getChannelData(data?.snippet?.channelId);
+      setChannelData(channelData);
+    };
+
+    fetchData();
+  }, [videoId,dispatch]);
+  
+
+
 
   return (
     <div className=" px-10 py-5   flex gap-5 max-sm:w-[100vw] flex-[1.5] max-sm:justify-center max-sm:px-2">
-      <div className="   ">
+      <div className=" flex-[1]  ">
         <div>
           <iframe
             className=" w-full h-[450px] max-sm:h-[200px]"
@@ -145,7 +152,7 @@ const WatchPage = () => {
         </div>
       </div>
       {!isSlidebarVisible && (
-        <div className="max-sm:hidden flex flex-col  ">
+        <div className="max-sm:hidden flex flex-col  flex-[0.5] h-[200vh]  sticky  bottom-0 top-0">
           <LiveChat />
           <OtherVideos />
         </div>

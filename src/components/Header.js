@@ -17,8 +17,17 @@ const Header = () => {
   const [isSuggestionsVisible, setIsSuggestionsVisible] = useState(false);
   const cacheData = useSelector((store) => store.SearchData);
   const screenWidth = window.innerWidth;
-
   useEffect(() => {
+    const getData = async () => {
+      const response = await fetch(Yt_Search + searchQuery);
+      const data = await response.json();
+      setSuggestions(data[1]);
+      dispatch(
+        addDataToSearch({
+          [searchQuery]: data[1],
+        })
+      );
+    };
     const timer = setTimeout(() => {
       if (cacheData[searchQuery]) {
         setSuggestions(cacheData[searchQuery]);
@@ -30,19 +39,12 @@ const Header = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [searchQuery]);
+  }, [searchQuery,dispatch,cacheData]);
 
-  const getData = async () => {
-    const response = await fetch(Yt_Search + searchQuery);
-    const data = await response.json();
-    setSuggestions(data[1]);
-    dispatch(
-      addDataToSearch({
-        [searchQuery]: data[1],
-      })
-    );
-  };
 
+  
+  
+ 
   return (
     <div className="flex items-center  justify-between gap-5   px-5 shadow-md py-1 sticky top-0 right-0 left-0 bottom-0 z-[100] bg-white">
       <div className="flex items-center gap-5 max-sm:gap-2">
@@ -66,8 +68,7 @@ const Header = () => {
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          onBlur={() => setIsSuggestionsVisible(false)}
-          onFocus={() => setIsSuggestionsVisible(true)}
+          onMouseEnter={() => setIsSuggestionsVisible(true)}
         />
         <div className="rounded-r-full  h-9 w-10 border border-gray-500 flex items-center justify-center hover:bg-gray-200">
           <button>
@@ -78,11 +79,16 @@ const Header = () => {
           <FaMicrophone size={"1em"}  />
         </div>
         {isSuggestionsVisible && (
-          <div className="bg-white border-black shadow-lg bottom-0 absolute  top-12 h-fit w-[80%]  rounded-md  ">
+          <div className="bg-white border-black shadow-lg bottom-0 absolute  top-12 h-fit w-[80%]  rounded-md  "
+          onMouseEnter={()=>setIsSuggestionsVisible(true)}
+          
+          >
             {suggestions.map((suggestion, index) => {
               return (
                 <SearchSuggestion
                   data={suggestion}
+                  setSearch ={setSearchQuery}
+                  setSuggestionVisible={setIsSuggestionsVisible}
                   key={index + Math.random()}
                 />
               );

@@ -19,7 +19,6 @@ const VideoContainer = () => {
       const response = await fetch(Youtube_API);
 
       const data = await response.json();
-      console.log(response);
 
       if (response.ok === false) {
         setTimeout(() => {
@@ -42,10 +41,13 @@ const VideoContainer = () => {
               return <ShimmerVideoCard key={index} />;
             })
         : videoData.map((video) => (
-            <Link to={`/watch?v=` + video.id} key={video.id}>
+          video.id.videoId?
+            <Link to={`/watch?v=${video?.id.videoId}`} key={video.id}>
               <VideoCard data={video} />
-              {/* {${(video.id.videoId===undefined)?video.id:video.id.videoId}} */}
-            </Link>
+              </Link>:<Link to={`/watch?v=${video?.id}`} key={video.id}>
+              <VideoCard data={video} />
+              </Link>
+            
           ))}
     </div>
   );
